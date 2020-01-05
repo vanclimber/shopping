@@ -22,7 +22,7 @@
         <div  class=" col-md-6 topNav">
             <ul class="breadcrumb">
                 <li class="dropdown topLang">
-                    <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
+                    <!-- <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
                         欢迎,<i th:text="${session.USER_name}"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu">
@@ -35,8 +35,8 @@
                         <li role="presentation">
                             <a th:href="@{/product/checkoutlist}">我的订单</a>
                         </li>
-                    </ul>
-                    <a th:if="${session.USER_ID==null}" href="login.html" th:href="@{/user/login}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </ul> -->
+                    <a  href="login.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
                     </a>
                 </li>
                 <li class="dropdown topLang">
@@ -68,11 +68,11 @@
 <div class="container">
     <div class="col-md-3 bigLogo">
         <a th:href="@{/user/index}">
-            <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}" alt="HK网上商城">
+            <img src="../static/image/logo/biglogo.png" alt="HK网上商城">
         </a>
     </div>
     <div class="col-md-6 Search">
-        <form th:action="@{/user/searchproduct}" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="input-group">
                 <input type="text" class="form-control" name="keyword" placeholder="搜你想要">
                 <span class="input-group-btn">
@@ -87,12 +87,12 @@
         <ul>
             <li>
                 <a href="#">
-                    <img src="../static/image/logo/wish.png" th:src="@{/image/logo/wish.png}" alt="心愿单">
+                    <img src="../static/image/logo/wish.png"  alt="心愿单">
                     <p th:if="${session.USER_ID!=null}" class="littleDot">0</p>
                 </a>
             </li>
             <li>
-                <a href="shoppingcart.html" th:href="@{/product/shoppingcart}">
+                <a href="shoppingcart.html" >
                     <img src="../static/image/logo/cartLogo.png" th:src="@{/image/logo/cartLogo.png}" alt="购物车">
                     <p th:if="${session.USER_ID!=null}" th:text="${session.CART_num}" class="littleDot">0</p>
                 </a>
