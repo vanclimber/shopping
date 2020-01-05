@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米CC9-HK商城</title>
+    <script src="../static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/product_0001.css">
+    <script src="../static/js/product_0001.js"></script>
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<div class="topBar">
+    <div class="container">
+        <div class="col-md-6">
+            <p>欢迎光临&nbsp;HK商城</p>
+        </div>
+        <div  class=" col-md-6 topNav">
+            <ul class="breadcrumb">
+                <li class="dropdown topLang">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
+                        欢迎,<i th:text="${session.USER_name}"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">个人主页</a>
+                        </li>
+                        <li role="presentation">
+                            <a th:href="@{/user/exitlogin}">退出登录</a>
+                        </li>
+                        <li role="presentation">
+                            <a th:href="@{/product/checkoutlist}">我的订单</a>
+                        </li>
+                    </ul>
+                    <a th:if="${session.USER_ID==null}" href="login.html" th:href="@{/user/login}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </a>
+                </li>
+                <li class="dropdown topLang">
+
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        语言
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">English</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#aboutUs">关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索框部分 -->
+<div class="container">
+    <div class="col-md-3 bigLogo">
+        <a th:href="@{/user/index}">
+            <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}" alt="HK网上商城">
+        </a>
+    </div>
+    <div class="col-md-6 Search">
+        <form th:action="@{/user/searchproduct}" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="搜你想要">
+                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-defalut"><span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-3 Cart">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="../static/image/logo/wish.png" th:src="@{/image/logo/wish.png}" alt="心愿单">
+                    <p th:if="${session.USER_ID!=null}" class="littleDot">0</p>
+                </a>
+            </li>
+            <li>
+                <a href="shoppingcart.html" th:href="@{/product/shoppingcart}">
+                    <img src="../static/image/logo/cartLogo.png" th:src="@{/image/logo/cartLogo.png}" alt="购物车">
+                    <p th:if="${session.USER_ID!=null}" th:text="${session.CART_num}" class="littleDot">0</p>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<!--商品导航界面-->
+    <div class="staticHeader">
+        <div class="container">
+            <h3>小米CC9</h3>
+            <!--<div class="staticLink">-->
+                <div class="leftLink">
+                    <span class="separator">|</span>
+                    <a href="#">小米CC9e</a>
+                    <span class="separator">|</span>
+                    <a href="#">小米CC9 Pro</a>
+                </div>
+                <div class="rightLink">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">首页</a></li>
+                        <li><a href="#details" data-toggle="tab">商品详情</a></li>
+                        <li><a href="#parameter" data-toggle="tab">参数</a></li>
+                        <li><a href="#evaluate" data-toggle="tab">用户评价</a></li>
+                    </ul>
+                </div>
+            <!--</div>-->
+        </div>
+    </div>
+
+<!--商品界面-->
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="container">
+            <div class="col-md-6">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1" ></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img  class="img-responsive" src="../static/image/product/product_0001_white1.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="../static/image/product/product_0001_white2.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="../static/image/product/product_0001_white3.jpg" alt="Third slide">
+                    </div>
+                    <div class="item">
+                        <img src="../static/image/product/product_0001_white4.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            </div>
+            <div class="col-md-6 storeBox">
+            <h3>小米CC9</h3>
+            <p><strong>「新品火爆热卖中，享花呗6期免息，赠活塞耳机！+19元可得果冻包」</strong>
+                前置3200万自拍 / 索尼4800万超广角三摄 / 多色炫彩轻薄机身 / 6.39英寸三星 AMOLED水滴屏
+                /4030mAh大电量 / 骁龙710处理器 / 屏幕指纹 / NFC功能 / 红外遥控功能 / Game Turbo2.0游戏加速
+            </p>
+            <ul class="chooseAll">
+                <li class="priceInfo">
+                    <label>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
+                    <p id="presentPrice">&nbsp;&nbsp;￥1999元</p>
+                </li>
+                <li>
+                    <label>选&nbsp;择&nbsp;颜&nbsp;色</label>
+                    <select class="colorSelect">
+                        <option>白色恋人（白色）</option>
+                        <option selected>深蓝星球（蓝色）</option>
+                        <option>暗夜王子（灰色）</option>
+                    </select>
+                </li>
+                <li>
+                        <label>选&nbsp;择&nbsp;版&nbsp;本</label>
+                        <select class="modelSelect" title="6GB+64GB">
+                            <option>6GB+64GB</option>
+                            <option>6GB+128GB</option>
+                            <option>8GB+128GB</option>
+                        </select>
+                    </li>
+            </ul>
+            <div class="addCart">
+                <button class="btn btn-success myCart" data-toggle="modal" data-target="#addToCart"><p>加入购物车</p></button>
+                <a href="#" class="btn btn-success myLove"><p>加入收藏</p></a>
+            </div>
+            <!--添加购物车的SKU选择-->
+            <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">添加购物车</h4>
+                        </div>
+                        <form  method="post" th:action="@{/product/addCart}"  enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>商品名称</label>
+                                    <h4 th:text="${productsList.get(0).name}"></h4>
+                                </div>
+                                <div class="form-group">
+                                    <label>商品SKU选择</label>
+                                </div>
+                                <div class="form-group SKUCycle" th:each="product:${productsList}" >
+                                    <input type="radio" name="proID" th:value="${product.id}" th:text="${product.productType}">
+                                    <label  th:text="'￥'+${product.price}+'元'"></label>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-success">提交</button>
+
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+        </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="details">
+        <div class="picture0">
+            <div class="con">
+                <h2>双旗舰相机，拍出C位美<br/>Be myself. Be CC.</h2>
+            </div>
+        </div>
+        <div class="picture1">
+            <div class="con">
+                <h2>与小米9相同的<br />6.39" 三星 AMOLED屏幕<br />德国 VDE 低蓝光护眼认证</h2>
+                <h3>三星AMOLED屏幕，拥有出众的广色域，高达60000：1的
+                    <br>对比度，支持智能环境适应，根据环境智能调整显示效果，
+                    <br>为你带来更自然的观看体验。
+                </h3>
+                <ul>
+                    <li>
+                        <span>91%</span>
+                        超高占屏比
+                    </li>
+                    <li>
+                        <span>硬件DC调光</span>
+                        低屏闪更护眼
+                    </li>
+                    <li>
+                        <span>护眼模式</span>
+                        降低屏幕蓝光
+                    </li>
+                    <li>
+                        <span>阳光屏</span>
+                        阳光下清晰可见
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="picture2">
+            <div class="con">
+                <h2>第七代<br />光感屏幕指纹识别</h2>
+                <h4>进一步优化低温、强光、干手指情况下的解锁速度，相比上一代提升10%。</h4>
+            </div>
+        </div>
+        <div class="picture3">
+            <div class="con">
+                <h2>179g 超轻手感<br />4030mAh 超大电量</h2>
+                <h4>轻薄的机身同时做到了轻盈和持久续航，4030mAh
+                    <br />的大电池足够应对一天的日常使用，18W快充也能
+                    <br />为手机快速恢复电量。</h4>
+            </div>
+        </div>
+        <div class="picture4">
+            <div class="container">
+                <div class="con">
+                    <h2>3200万自拍旗舰
+                        <br/>超高解析、超高像素
+                        <br/>拍出写真质感
+                    </h2>
+                    <h4>像素越高，清晰度越好。可拍摄6560×4928超高分辨率的高清照片，每根睫毛、 发丝都格外清晰。
+                        <br/>无论后期美颜、修图、裁切，都会让你游刃有余，更好保留照片画质。
+                    </h4>
+                    <img class="midImg" src="/image/product/product_0001_detail4.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="picture5">
+            <div class="container">
+                <div class="con">
+                    <h2>Mimoji 萌拍
+                        <br/>实时创作一个卡通版的你
+                        <br/>学你说话做表情
+                    </h2>
+                    <h4>你的自拍就是你的 Mimoji 形象。打开萌拍实时模仿你的一举一动，
+                        <br/>不仅能制作卡通自拍照，还能根据上百种创作素材，制作充满创意
+                        <br/>的短视频。</h4>
+                    <img src="/image/product/mimoji.png">
+                    <h2>索尼4800万超高清AI三摄
+                        <br/>年度旗舰主摄
+                    </h2>
+                    <h4>4800万超清镜头，让每张创作细节完美地保留并呈现。118°（畸变矫正前）超广角相机让画面更宽更广。
+                        <br/>景深镜头聚焦人像，虚化背景，让你成为每张照片的焦点。</h4>
+                </div>
+            </div>
+        </div>
+        <div class="lastPicture">
+            <a href="#parameter" data-toggle="tab">
+                <h4>查看参数 ></h4>
+            </a>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="parameter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>处理器</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>骁龙 710</h1>
+                        <h3>八核处理器</h3>
+                        <h4>10nm工艺制程， 最高主频 2.2GHz
+                            <br/>Adreno 616 图形处理器
+                            <br/>搭载Qualcomm AI Engine
+                        </h4>
+                    </div>
+                    <div class="context">
+                        <h1>6GB+128GB</h1>
+                        <h3>最高可选</h3>
+                        <h4>6GB LPDDR4X（1866MHz）双通道大内存<br/>64GB / 128GB 机身存储 UFS2.1</h4>
+                        <h5>*实际可用容量会由于诸多因素而减少并有所差异：由于操作系统运行占据了部分内存（RAM），实际可用空间小于标识内存容量；
+                            由于安装操作系统和预装的程序占据了部分闪存（ROM），实际可用存储空间小于标识闪存容量。</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>屏幕</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+
+                        <h1>6.39英寸<br/>三星 AMOLED 屏幕<br>德国 VDE 低蓝光护眼认证</h1>
+
+                        <h4>分辨率 1080 x 2340 FHD + 403 PPI
+                            <br/>屏幕亮度 600nit (HBM) / 430nit (Typ)
+                            <br/>高对比度 60000:1(Min)
+                            <br/>广色域显示 NTSC 103.8%（Typ）
+                            <br/>支持无级色温调节 | 标准模式 | 阳光屏 2.0 | 256阶护眼模式 | 夜光屏
+                            <br/>支持全程 DC 调光
+                            <br/>支持HDR显示
+                            <br/>康宁第五代大猩猩玻璃
+                            <br/>采用防油渍防指纹涂层
+                        </h4>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>前置相机</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>3200万 超高清自拍</h1>
+                        <h3>前置32MP，4in1 1.6μm大像素，f/2.0大光圈
+                            <br/>前置相机拍照支持</h3>
+                        <h4>Mimoji萌拍 | AI人像模式 | 3D美妆美型 | 前置全景 | 拍照全屏画幅 | 手势拍照 | 前置HDR | 前置屏幕补光
+                            <br/>| 倒计时拍照 | 面部识别功能 | 梦幻眼神光 | AI智能美颜 | 宝宝美颜 | AI微整形 | AI裸妆美颜
+                            <br/>| AI场景相机 | AI影棚光效 </h4>
+                        <h3>前置相机视频支持</h3>
+                        <h4>短视频*（抖音魔法道具、速度调节、美颜滤镜、热门音乐） | 前置视频美颜</h4>
+                        <h5>*短视频的抖音相关功能会通过后续OTA升级提供</h5>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>后置相机</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>48MP 超高清AI三摄</h1>
+                        <h4>超高清镜头 索尼48MP, 0.8μm, 1/2"感光面积, f/1.79光圈 , 6P镜头
+                            <br/>超广角镜头 8MP
+                            <br/>景深镜头 2MP </h4>
+                        <h3>后置相机拍照功能支持</h3>
+                        <h4>4800万超清 | 智能超广角模式 | 手持超级夜景模式 | 人像模式背景虚化 | 全景模式 | 专业模式 | 倒计时拍照
+                            <br/>| 水平仪 | 连拍模式 | 面部识别 | HDR | 千人千面的 AI 美颜（增加宝宝美颜）| AI智能瘦身
+                            <br/>| 超广角边缘畸变校正 | 合影人脸修正 | 自定义水印 | 人像虚化调节 | 后置 AI 场景相机（30种标签）| AI动态光斑
+                            <br/>| AI影棚光效 | AI 超分辨率拍照
+                        </h4>
+                        <h3>后置相机视频支持</h3>
+                        <h4>960fps 慢动作拍摄 | 960fps AI智能配乐
+                            <br/>15秒短视频录制 | 后置短视频塑形瘦身
+                            <br/>后置视频美颜 | EIS 视频防抖
+                        </h4>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>生物识别</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>第七代光感屏幕指纹识别</h1>
+                        <h4>信号量增加40%
+                            <br/>解锁速度提升 10%
+                            <br/>干手指识别率提升30%
+                            <br/>录入次数减少5次
+                            <br/>
+                            <br/>指纹识别快捷功能支持：
+                            <br/>微信付款码 微信扫一扫 小爱同学 支付宝扫一扫 支付宝付款码
+                        </h4>
+                        <h1>人脸解锁</h1>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>充电与电池</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h3>4030mAh* 超长续航</h3>
+                        <h4>4030mAh（typ）/ 3940mAh（min）
+                            <br/>支持 18W 充电，标配 9V2A 18W 充电器
+                            <br/>支持 QC 4 快充协议
+                            <br/>USB Type-C 双面充电接口
+                            <br/>内置锂离子聚合物电池，不可拆卸
+                        </h4>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>多功能NFC</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h4>在小米钱包开通后，通过双击电源键使用小米公交*、Mi Pay、小米门卡等功能，用于公共交通、移动支付、手机开门等场景。
+                            支持读卡器模式、点对点模式、卡模拟模式（Mi Pay 线下支付，银联碰一碰支付*，Mi Pay 线上支付）进一步了解：www.mipay.com
+                        </h4>
+                        <h5>*京津冀互联互通卡开卡（支持245座城市）永久免费。
+                            <br/>*小米公交累计支持256座城市。
+                        </h5>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>网络与制式</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>全网通 5.0</h1>
+                        <h3>支持双卡不限运营商，均可4G驻网①</h3>
+                        <h4>支持Nano-SIM+ (Nano-SIM/Micro-SD) 三选二 卡槽 支持额外扩容 256GB（ Vfat 格式）
+                            <br/>支持移动/联通/电信 4G+/4G/3G/2G
+                            <br/>支持双卡VoLTE高清语音②
+                            <br/>天线智能切换，解决usb/耳机场景信号变差③
+                        </h4>
+                        <h5>注1： 是否支持4G取决于当地运营商网络; 当使用两张电信卡时，副卡只能注册电信VoLTE网络，如果副卡或者当地网络不支持电信VoLTE业务则无法使用；
+                            <br/>注2： 受限于运营商网络和业务部署，当前仅支持中国移动 VoLTE 业务，后续可通过软件升级支持其他运营商 VoLTE 需求；
+                            <br/>注3：天线智能切换算法：
+                            <br/>（1）2/3/4G发射天线根据信号好坏，自动在上下天线间切换，最大提升性能6dB
+                            <br/>（2）插入USB线充电时，自动优化天线状态，最大提升性能3dB
+                            <br/>（3）插入耳机时，自动优化天线状态，最大提升性能2dB
+                        </h5>
+                        <h3>支持频段</h3>
+                        <h4>GSM：B2 / B3 / B5 / B8
+                            <br/>CDMA1X/EVDO：BC0
+                            <br/>WCDMA：B1 / B2 / B5 / B8
+                            <br/>TD-SCDMA：B34 / B39
+                            <br/>FDD-LTE：B1/B3/B5/B8
+                            <br/>TDD-LTE：B34/B38/B39/B40/B41
+                            <br/>注：LTE B41(2535-2655 120MHz)
+                        </h4>
+                        <h3>无线网络</h3>
+                        <h4>支持协议 802.11a/b/g/n/ac
+                            <br/>支持 蓝牙5.0
+                        </h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>操作系统</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h1>MIUI 10*</h1>
+                        <h3>MI Turbo</h3>
+                        <h4>支持碎片整理 I/O性能优化 | 支持应用启动速度优化
+                            <br/>模拟 18 个月使用，降低老化卡顿35%
+                        </h4>
+                        <h3>Game Turbo 2.0</h3>
+                        <h4>支持感知游戏复杂场景 ，智能调度系统资源 | 支持自定义游戏触控参数丨支持自定义游戏显示增强
+                           <br/>枪战类游戏4D触感 | 支持显示CPU占用、GPU占用、FPS | 游戏工具箱支持一键切换上网卡，支持息屏挂机等功能
+                           <br/>支持游戏性能增强、优化触控响应丨支持自定义边缘抑制范围 | 支持关闭自动亮度、三指截屏、护眼模式
+                           <br/>提升跟手性、点击灵敏度丨白名单的形式做触控效果调节
+                        </h4>
+                        <h3>动态壁纸及显示</h3>
+                        <h4>彩色AOD息屏显示 | 支持随当地日出日落时间变化的动态壁纸
+                            <br/>支持深色模式（Dark mode）
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>外观尺寸</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h4>高度：156.8mm
+                            <br/>宽度：74.5mm
+                            <br/>厚度：8.67mm
+                            <br/>重量：179g
+                        </h4>
+                        <h5>*此数据为⼩米实验室测试数据，依据行业内测量方式不同，实际结果可能略有差异。</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>按键与解锁</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <img src="/image/product/product_0001_parameter1.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>包装清单</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="context">
+                        <h4>手机主机 / 电源适配器 / USB Type-C 数据线
+                            <br/>高透软胶保护壳 / 插针 / 三包凭证 / 入门指南
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="context">
+                    <h4>说明</h4>
+                    <h5>* MIUI 10系统，最终以 MIUI 官网公布（www.miui.com）、MIUI稳定版功能更新为准。
+                        <br/>*内存与容量方面，实际可用容量会由于诸多因素而减少并有所差异：由于操作系统运行占据了部分内存（RAM），实际可用空间小于标识内存容量；由于安装操作系统和预装的程序占据了部分闪存（ROM），实际可用存储空间小于标识闪存容量。
+                        <br/>*充电方面，速度、时长等数据，均为我司实验室数据，实际情况会因测试软件版本、具体测试环境、具体版本不同而略有差异。最终以实际使用时长为准。
+                        <br/>*屏幕方面，小米手机显示屏采用曲线优美的圆角设计，四个圆角位于一个标准矩形内。按照标准矩形测量时，屏幕的对角线长度是 6.39 英寸 (实际可视区域较小)。全面屏是一项屏幕技术，指相比其他小米手机，屏幕占比较大；91%屏占⽐为⼩米实验室测试数据，依据行业内测量方式不同，实际结果可能略有差异 。VDE认证证书：ID.40049450；Test Report No.258484-TL1-1;File Number 5019654-3250-0002
+                        <br/>*网络与制式方面，是否支持 4G 取决于当地运营商网络; 当使用两张电信卡时，副卡只能注册电信 VoLTE 网络，如果副卡或者当地网络不支持电信 VoLTE 业务则无法使用； 受限于运营商网络和业务部署，当前支持中国移动/中国电信的 VoLTE 业务，后续可通过软件升级支持其他运营商 VoLTE 需求。
+                        <br/>*多功能 NFC：小米门卡仅能模拟未经加密且频段为 13.56MHz 的门卡，带有门卡功能的银行卡和储值消费、公交消费等功能的门卡暂时不能被模拟，即使模拟成功，这些卡片也不具备银行、公交等功能；Mi Pay支持107家银行；在初期销售批次手机中，小米公交支持京津冀互联互通卡、上海公共交通卡、岭南通（交通联合）、江苏交通一卡通・苏州、武汉通、重庆畅通卡、厦门e通卡、合肥通、长安通、绿城通、琴岛通、台州公共交通卡、江苏一卡通・南通、哈尔滨城市通、海南一卡通、广西交通一卡通16张交通卡，其它城市上线由于技术条件、城市等有所差异，以产品完成测试时间为准。
+                        <br/>*本网站提供的屏幕图和产品说明展示图， 均为参考示意图，实际情况以实物为准。
+                        <br/>*产品图片以及型号、数据、功能、性能、规格参数、用户界面和其他产品信息等仅供参考，小米有可能对上述内容进行改进，具体信息请参照产品实物、产品说明书。除非经特殊说明，本网站中所涉及的数据均为小米内部测试结果，涉及的对比均为与小米产品相比较.
+                    </h5>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--底部信息栏-->
+<div class="priceIntro">
+    <div class="container">
+        <h3>价格说明</h3>
+        <p> *因可能存在系统缓存，页面更新导致价格变动异常等不确定性情况出现，如您发现活动商品标价或促销信息有异常，请您立即联系我们，以便我们及时补正。
+            <br>*以上页面中的产品图片及屏幕内容仅作示意，实物产品效果（包括但不限于外观、颜色、尺寸）和屏幕显示内容（包括但不限于背景、UI、配图）可能略有差异，请以实物为准。
+            <br>*以上页面中的数据为理论值，均来自华为内部实验室，于特定测试环境下所得（请见各项具体说明），实际使用中可能因产品个体差异、软件版本、使用条件和环境因素不同略有不同，请以实际使用的情况为准。
+            <br>*为提供尽可能准确的产品信息、规格参数、产品特性，华为或荣耀可能实时调整和修订以上页面中的文字表述、图片效果等内容，以求与实际产品性能、规格、指数、零部件等信息相匹配，由于产品批次和生产供应因素实时变化，如遇确有进行上述修改和调整必要的情形，恕不专门通知。
+            <br>*请勿随意接收任何来源不明的文件，请勿随意点击任何来源不明的链接。涉及资金往来的事项请务必仔细核对资金往来信息。 HK不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可在客服中心“诈骗举报”中进行举报.
+        </p>
+    </div>
+
+
+</div>
+<div class="container lastNav">
+    <hr>
+    <div class="col-md-3">
+
+        <ul>帮助中心
+            <li><a href="">账户管理</a></li>
+            <li><a href="">购物指南</a></li>
+            <li><a href="">订单操作</a></li>
+            <li><a href="">常见问题</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>服务支持
+            <li><a href="">线下门店</a></li>
+            <li><a href="">售后政策</a></li>
+            <li><a href="">服务网点</a></li>
+            <li><a href="">相关下载</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul id="aboutUs">关于我们
+            <li><a href="">了解HK</a></li>
+            <li><a href="">加入我们</a></li>
+            <li><a href="">新浪微博</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>特色服务
+            <li><a href="">会员特权</a></li>
+            <li><a href="">防伪查询</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">企业服务</a></li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/product_0001.js"></script>
+
+</html>

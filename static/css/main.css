@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* 全局栅格样式 */
+body{font-family: DeliciousRoman , arial, Microsoft Yahei, 宋体, sans-serif !important;}
+ul{padding:0;}
+ul li{list-style: none;}
+a:hover{text-decoration: none;color: rgb(240, 90, 45);}
+.breadcrumb{margin-bottom: 0;padding: 0;background:none;}
+.breadcrumb a{color:#323131;}
+.breadcrumb a:hover{color: rgb(240, 90, 45)}
+.btn{padding:0;margin:0;border:none;}
+.glyphicon{vertical-align: text-bottom;}
+.carousel-control{color:rgb(240,90,45)}
+.carousel-control:hover{background-color: #8F8F8F;}
+.carousel-control.left,.carousel-control.right{background-image: none;height: 10%;top:50%;width: 6%;}
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next, .carousel-control .icon-prev{margin-top: -0.5em;}
+.carousel-indicators li{border:1px solid #8F8F8F;background-color: #8F8F8F;}
+
+.separator{margin: 0.25em;color: #e0e0e0;}
+/*顶部导航栏样式*/
+.topBar{background-color: rgb(245, 245, 245);height: 2.5em;margin-bottom: 2em;}
+.topBar p{font-size:1.5em;color: #323131;display: inline;}
+.topNav ul{font-size:1.5em;float: right;height: 100%;}
+.topLang button{font-size: inherit;background:none;color: black;}
+.topLang button:hover{color: rgb(240, 90, 45);}
+.topLang ul{height:auto;}
+.topLang ul li{font-size: 0.7em;}
+.topLang li a:hover{color: rgb(240, 90, 45);}

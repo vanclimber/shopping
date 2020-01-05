@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>填写订单信息</title>
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <script src="../static/bootstrap/js/bootstrap.min.js"  th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="../static/css/checkout.css"  th:href="@{/css/checkout.css}">
+    <script src="../static/js/checkout.js" th:src="@{/js/checkout.js}"></script>
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+<!--顶部导航栏-->
+<div class="topBar">
+    <div class="container">
+        <div class="col-md-6">
+            <p>确认订单</p>
+        </div>
+        <div class=" col-md-6 topNav">
+            <ul class="breadcrumb">
+                <li>
+                    <a th:if="${session.USER_ID!=null}"  >
+                        欢迎,<i th:text="${session.USER_name}"></i>
+                    </a>
+                    <a th:if="${session.USER_ID==null}" href="login.html" th:href="@{/user/login}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </a>
+                </li>
+                <li class="dropdown topLang">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        语言
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">English</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#aboutUs">关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--主要界面-->
+<div class="pageMain">
+    <div class="container">
+        <div class="sectionAddress">
+            <div class="sectionHeader">
+                <h4>收货地址</h4>
+                <span class="separator">|</span>
+                大型商品下单后，收货地址将无法修改。 快递公司会电话联系您确认送货时间，收货时需核对身份证信息。
+            </div>
+            <div id="addressList">
+                <ul>
+                    <form action="/product/topay" method="post" enctype="multipart/form-data" id="putaddress">
+                    <li th:each="myaddress:${addresses}">
+                        <div class="myAddress">
+                            <div class="userInfo">
+                                <input type="radio" th:value="${myaddress.id}" name="checkedaddress" hidden="hidden">
+                                <input type="radio" th:value="${order.id}" hidden="hidden" name="order" checked="checked">
+                                <label th:text="${myaddress.tUName}">范灿</label>
+                                <span th:text="${myaddress.phone}">12345678987</span>
+                            </div>
+                            <div class="addressDetail">
+                                <h6 class="province" th:text="${myaddress.province}">四川省</h6>
+                                <h6 class="city" th:text="${myaddress.city}">成都市</h6>
+                                <h6 class="county" th:text="${myaddress.county}">成华区</h6>
+                                <h6 class="town" th:text="${myaddress.town}">猛追湾</h6>
+                                <p th:text="${myaddress.detail}">电子科技大学</p>
+                            </div>
+                            <div class="addressSub">
+                                <a href=""><img src="../static/image/checkout/delete.png" th:src="@{/image/checkout/delete.png}">删除</a>
+                                <a href=""><img src="../static/image/checkout/edit.png" th:src="@{/image/checkout/edit.png}">编辑</a>
+                            </div>
+                        </div>
+                    </li>
+                    </form>
+                    <li id="addressEmpty">
+                        <a href="" data-toggle="modal" data-target="#myModal">
+                            <img src="../static/image/checkout/add.png" th:src="@{/image/checkout/add.png}">
+                            <br/><span>新增收货地址</span>
+                        </a>
+                    </li>
+                    <!--//新增收货地址模态框-->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">添加收货地址</h4>
+                                </div>
+                                <form role="form" th:action="@{/product/addAddress}" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>姓名</label>
+                                            <input type="text" th:value="${order.id}" hidden="hidden" name="orderID">
+                                            <input type="text" class="form-control" id="tUName" th:field="${addaddress.tUName}" placeholder="请输入姓名" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>联系方式</label>
+                                            <input type="tel" class="form-control" id="phone" th:field="${addaddress.phone}" placeholder="请输入联系方式" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>地址</label>
+                                            <input type="text" id="province" th:field="${addaddress.province}" placeholder="省/自治区/直辖市" required="required">
+                                            <input type="text" id="city" th:field="${addaddress.city}" placeholder="市/区" required="required">
+                                            <input type="text" id="county" th:field="${addaddress.county}" placeholder="县/市辖区" required="required">
+                                            <input type="text" id="town" th:field="${addaddress.town}" placeholder="街道/镇/乡" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>详细地址</label>
+                                            <textarea class="form-control" rows="3" id="detail" th:field="${addaddress.detail}" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-success">保存</button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                </ul>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="sectionGoods">
+            <h4>商品</h4>
+            <div class="mainGoods">
+                <ul>
+
+                    <li th:each="commerce:${commmerces}">
+                        <!--<img th:src="@{/product/download(id=${product.id})}">-->
+                        <!--<img  th:if="${product.filetitle}!=null"  th:src="'/admin/img/'+${product.id}">-->
+                        <img th:src="'/admin/img/'+${commerce.proId}">
+                        <span  class="Pname" th:text="${commerce.proName}"></span>
+                        <span class="Ptype" th:text="${commerce.proType}"></span>
+                        <span class="Pnum" th:text="'×'+${commerce.quantity}">×1</span>
+                        <span class="Pprice" th:text="${commerce.preprice}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="sendWay">
+                <span>配送方式</span>
+                <select>
+                    <option>快递</option>
+                    <option>门店自提</option>
+                </select>
+            </div>
+            <div class="moneyBox">
+                <ul>
+                    <li><label>商品数量:</label><span id="totalNum">2件</span></li>
+                    <li><label>商品总价:</label><span th:text="${order.totalPrice}-10">2</span></li>
+                    <li><label>活动优惠:</label><span>-0元</span></li>
+                    <li><label>优惠券抵扣:</label><span>-0元</span></li>
+                    <li><label>运费:</label><span>+10元</span></li>
+                    <li><label>应付总额</label><h2 th:text="${order.totalPrice}">0元</h2></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="pullOrder">
+            <button class="btn btn-success" id="goAhead">去付款</button>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

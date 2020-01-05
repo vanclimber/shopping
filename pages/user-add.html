@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="../static/css/register.css" th:href="@{/css/register.css}">
+</head>
+<body>
+<div class="topRegister">
+    <div class="container">
+        <div class="col-md-3 leftLogo">
+            <a href="index.html" th:href="@{index}">
+                <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}">
+            </a>
+            账号注册
+        </div>
+        <div class="col-md-3 col-md-offset-6">
+            <div class="rightLogo">
+                我已注册，
+                <a href="login.html" th:href="@{login}">直接登陆</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="mainRegister">
+        <p>一个账号享受HK所有服务</p>
+        <form class="form-horizontal" action="/user/add" method="post" th:object="${user}">
+            <div class="form-group">
+                <label for="" class="col-md-2  col-md-offset-2 control-label">账号</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="name" th:field="*{name}"placeholder="6-16位，数字和字母组合，区分大小写">
+                </div>
+                <div class="col-md-3" th:if="${isNameExist}==true">
+                    <h6 style="color:red;">*用户名已存在</h6>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-md-2  col-md-offset-2 control-label">密码</label>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" name="password" th:field="*{password}"placeholder="6-16位，字母，数字和符号组合，区分大小写">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-md-2  col-md-offset-2 control-label">再次确认密码</label>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" name="secondpassword"  placeholder="6-16位，字母，数字和符号组合，区分大小写">
+                </div>
+                <div class="col-md-4" th:if="${isPasswordEqual}==false">
+                    <h6 style="color: red">两次密码不一致</h6>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label for="" class="col-md-2  col-md-offset-2 control-label">确认密码</label>-->
+                <!--<div class="col-md-4">-->
+                    <!--<input type="password" class="form-control" name="password_confirm" th:field="*{password}" placeholder="再次确认密码">-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label for="" class="col-md-2  col-md-offset-2 control-label">邮箱</label>
+                <div class="col-md-4">
+                    <input type="email" class="form-control" name="email" th:field="*{email}"placeholder="忘记密码时可修改密码">
+                </div>
+            </div>
+
+            <!--<div class="form-group">-->
+                <!--<label for="" class="col-md-2  col-md-offset-2 control-label">电话</label>-->
+                <!--<div class="col-md-4">-->
+                    <!--<input type="text" class="form-control" name="phone" th:text="*{phone}" th:readonly="readonly" value="aaaa">-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-4 buttonRegister">
+                    <a href="login">
+                        <button type="submit" class="btn btn-success">注册</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>华为P30Pro-HK商城</title>
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <script src="../static/bootstrap/js/bootstrap.min.js"  th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}"   >
+    <link rel="stylesheet" href="../static/css/product_0002.css"  th:href="@{/css/product_0002.css}"  >
+    <script src="../static/js/product_0002.js" th:src="@{/js/product_0002.js}" ></script>
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<div class="topBar">
+    <div class="container">
+        <div class="col-md-6">
+            <p>欢迎光临&nbsp;HK商城</p>
+        </div>
+        <div class=" col-md-6 topNav">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="../templates/login.html" th:href="@{login}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </a>
+                </li>
+                <li class="dropdown topLang">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        语言
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">English</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#aboutUs">关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索框部分 -->
+<div class="container">
+    <div class="col-md-3 bigLogo">
+        <a href="index.html">
+            <img src="../static/image/logo/biglogo.png"  th:src="@{/image/logo/biglogo.png}" alt="HK网上商城">
+        </a>
+    </div>
+    <div class="col-md-6 Search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="搜你想要">
+            <span class="input-group-btn">
+                <button class="btn btn-defalut"><span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3 Cart">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="../static/image/logo/wish.png"  th:src="@{/image/logo/wish.png}"  alt="心愿单">
+                    <p class="littleDot">2</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../static/image/logo/cartLogo.png"  th:src="@{/image/logo/cartLogo.png}" alt="购物车">
+                    <p class="littleDot">1</p>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<!--商品导航界面-->
+<div class="staticHeader">
+    <div class="container">
+        <h3>华为P30 pro</h3>
+        <!--<div class="staticLink">-->
+        <div class="leftLink">
+            <span class="separator">|</span>
+            <a href="#">华为p30</a>
+        </div>
+        <div class="rightLink">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">首页</a></li>
+                <li><a href="#details" data-toggle="tab">商品详情</a></li>
+                <li><a href="#parameter" data-toggle="tab">参数</a></li>
+                <li><a href="#evaluate" data-toggle="tab">用户评价</a></li>
+            </ul>
+        </div>
+        <!--</div>-->
+    </div>
+</div>
+
+<!--商品界面-->
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="container">
+            <div class="col-md-6">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" ></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img  class="img-responsive" src="../static/image/product/product_0002/product_0002_white1.png"
+                                  th:src="@{/image/product/product_0002/product_0002_white1.png}"
+                                  alt="First slide">
+                        </div>
+                        <div class="item">
+                            <img src="../static/image/product/product_0002/product_0002_white2.png"
+                                 th:src="@{/image/product/product_0002/product_0002_white2.png}"
+                                 alt="Second slide">
+                        </div>
+                        <div class="item">
+                            <img src="../static/image/product/product_0002/product_0002_white3.png"
+                                 th:src="@{/image/product/product_0002/product_0002_white3.png}"
+                                 alt="Third slide">
+                        </div>
+                        <div class="item">
+                            <img src="../static/image/product/product_0002/product_0002_white4.png"
+                                 th:src="@{/image/product/product_0002/product_0002_white4.png}"
+                                 alt="Third slide">
+                        </div>
+                    </div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 storeBox">
+                <h3>华为P30 pro</h3>
+                <p><strong>「赠价值99元精美专属保护壳（颜色可选）,晒单赢耳麦礼包。即日起，P30 Pro机主可享尊享金卡专属服务权益」</strong>
+                    华为 HUAWEI P30 Pro 超感光徕卡四摄10倍混合变焦麒麟980芯片屏内指纹全网通版双4G手机。
+                    华为P30 Pro尊享金卡专属服务权益包含：①保修期内（不含延保）可享2次免费保养②1小时快修服务③金卡专属热线服务
+                </p>
+                <ul class="chooseAll">
+                    <li class="priceInfo">
+                        <label>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
+                        <p id="presentPrice">&nbsp;&nbsp;￥5488元</p>
+                    </li>
+                    <li>
+                        <label>选&nbsp;择&nbsp;颜&nbsp;色</label>
+                        <select class="colorSelect">
+                            <option>天空之境</option>
+                            <option selected>极光色</option>
+                            <option>赤茶橘</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>选&nbsp;择&nbsp;版&nbsp;本</label>
+                        <select class="modelSelect">
+                            <option>8GB+128GB</option>
+                            <option>8GB+256GB</option>
+                            <option>8GB+512GB</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="addCart">
+                    <a href="#" class="btn btn-primary myCart"><p>加入购物车</p></a>
+                    <a href="#" class="btn btn-primary myLove"><p>加入收藏</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="details">
+        <img src="../static/image/product/product_0002/product_0002_detail1.jpg" th:src="@{/image/product/product_0002/product_0002_detail1.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail2.jpg"th:src="@{/image/product/product_0002/product_0002_detail2.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail3.jpg"th:src="@{/image/product/product_0002/product_0002_detail3.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail4.jpg"th:src="@{/image/product/product_0002/product_0002_detail4.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail5.jpg"th:src="@{/image/product/product_0002/product_0002_detail5.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail6.jpg"th:src="@{/image/product/product_0002/product_0002_detail6.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail7.jpg"th:src="@{/image/product/product_0002/product_0002_detail7.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail8.jpg"th:src="@{/image/product/product_0002/product_0002_detail8.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail9.jpg"th:src="@{/image/product/product_0002/product_0002_detail9.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail10.jpg"th:src="@{/image/product/product_0002/product_0002_detail10.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail11.jpg"th:src="@{/image/product/product_0002/product_0002_detail11.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail12.jpg"th:src="@{/image/product/product_0002/product_0002_detail12.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail13.jpg"th:src="@{/image/product/product_0002/product_0002_detail13.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail14.jpg"th:src="@{/image/product/product_0002/product_0002_detail14.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail15.jpg"th:src="@{/image/product/product_0002/product_0002_detail15.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail16.jpg"th:src="@{/image/product/product_0002/product_0002_detail16.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail17.jpg"th:src="@{/image/product/product_0002/product_0002_detail17.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail18.jpg"th:src="@{/image/product/product_0002/product_0002_detail18.jpg}">
+        <img src="../static/image/product/product_0002/product_0002_detail19.jpg"th:src="@{/image/product/product_0002/product_0002_detail19.jpg}">
+
+
+
+
+    </div>
+    <div class="tab-pane fade" id="parameter">
+        <div class="container">
+            <div class="row">
+                <h3>主要参数</h3>
+                <ul>
+                    <li>
+                        <label>传播名</label>
+                        <span>HUAWEI P30 Pro</span>
+                    </li>
+                    <li>
+                        <label>后置摄像头</label>
+                        <span>后置徕卡四摄： 4000万像素超感光摄像头（广角，f/1.6光圈，OIS）+2000万像素超广角摄像头（f/2.2光圈）+800万像素超级变焦摄像头（f/3.4光圈，OIS）+华为Time-of-Flight（ToF）摄像头，
+                            支持自动对焦（相位对焦/反差对焦），支持AIS防抖。 备注：不同拍照模式的照片像素可能有差异，请以实际为准。
+                        </span>
+                    </li>
+                    <li>
+                        <label>电池容量</label>
+                        <span>4200mAh（典型值）备注：电池额定容量为 4100mAh;</span>
+                    </li>
+                    <li>
+                        <label>前置摄像头</label>
+                        <span>前置单摄： 3200万像素，f/2.0光圈备注： 不同拍照模式的照片像素可能有差异，请以实际为准。</span>
+                    </li>
+                    <li>
+                        <label>屏幕尺寸</label>
+                        <span>6.47英寸（备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.47 英寸 (实际可视区域略小)）</span>
+                    </li>
+                    <li>
+                        <label>上市时间</label>
+                        <span>2019年4月</span>
+                    </li>
+                    <li>
+                        <label>屏幕色彩</label>
+                        <span>1670万色，DCI-P3广色域</span>
+                    </li>
+                    <li>
+                        <label>运行内存（RAM）</label>
+                        <span>8G（备注：可使用的内存容量小于此值，因为手机软件占用部分空间）</span>
+                    </li>
+                    <li>
+                        <label>机身内存（ROM）</label>
+                        <span>128GB（备注：可使用的内存容量小于此值，因为手机软件占用部分空间）</span>
+                    </li>
+                    <li>
+                        <label>最大支持扩展</label>
+                        <span>256GB NM存储卡（非标配，需另行购买）</span>
+                    </li>
+                    <li>
+                        <label>分辨率</label>
+                        <span>FHD+ 2340*1080 像素（备注：该分辨率对应标准矩形，实际屏幕采用圆角和珍珠屏设计，有效像素略少。）</span>
+                    </li>
+                    <li>
+                        <label>CPU型号</label>
+                        <span>HUAWEI Kirin 980 （麒麟980）</span>
+                    </li>
+                    <li>
+                        <label>CPU核数</label>
+                        <span>八核</span>
+                    </li>
+                    <li>
+                        <label>双卡</label>
+                        <span>双卡双待</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>主体</h3>
+                <ul>
+                    <li><label>品牌</label><span>华为 HUAWEI</span></li>
+                    <li><label>型号</label><span>VOG-AL00</span></li>
+                    <li><label>上市时间</label><span>2019年4月</span></li>
+                    <li><label>外观设计</label><span>直板</span></li>
+                    <li><label>智能手机</label><span>是</span></li>
+                    <li><label>操作系统</label><span>华为EMUI9.1.0(兼容Android 9)</span></li>
+                    <li><label>用户界面</label><span>EMUI 9.1.0</span></li>
+                    <li><label>CPU型号</label><span>HUAWEI Kirin 980 （麒麟980）</span></li>
+                    <li><label>CPU核数</label><span>八核</span></li>
+                    <li><label>CPU主频</label><span>2*Cortex-A76 Based 2.6GHz+ 2*Cortex-A76 Based 1.92GHz+ 4*Cortex-A55 1.8GHz</span></li>
+                    <li><label>GPU</label><span>Mali G76 720MHz</span></li>
+                    <li><label>NPU</label><span>双NPU(神经网络处理单元)</span></li>
+                    <li><label>双卡</label><span>双卡双待</span></li>
+                    <li><label>输入方式</label><span>百度输入法华为版</span></li>
+                    <li><label>系统导航方式</label><span>手势导航、屏幕内三键导航、悬浮导航</span></li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>网络</h3>
+                <ul>
+                    <li>
+                        <label>网络制式</label>
+                        <span>
+                            支持移动/联通/电信 4G+/4G/3G/2G备注： *卡槽1、2可以任意切换为默认移动数据卡。 *如果两张都是电信卡，副卡（非默认移动数据卡）必须开通电信VoLTE业务，
+                            才能同时使用电信双卡。 *4G网络使用，需要根据运营商网络和相关业务部署情况确定是否支持。
+                        </span>
+                    </li>
+                    <li>
+                        <label>4G网络制式</label>
+                        <span>主卡/副卡： 4G网络制式 移动4G（TD-LTE）/联通4G（TD-LTE/LTE FDD）/电信 4G（TD-LTE/LTE FDD）</span>
+                    </li>
+                    <li>
+                        <label>3G网络制式</label>
+                        <span>主卡：3G网络制式 移动3G（TD-SCDMA）/联通3G（WCDMA）/电信3G（CDMA 2000）；副卡：3G网络制式 联通3G（WCDMA）</span>
+                    </li>
+                    <li>
+                        <label>2G网络制式</label>
+                        <span>主卡/副卡：2G网络制式 移动2G（GSM）/联通2G（GSM）/电信2G（CDMA 1X）备注：电信双卡时，副卡（非默认移动数据卡）不支持电信2G</span>
+                    </li>
+                    <li>
+                        <label>网络频率</label>
+                        <span>主卡：FDD-LTE：频段 1/2/3/4/5/6/7/8/9/12/17/18/19/20/26TD-LTE：频段 34/38/39/40/41(2535-2655 MHz)UMTS(WCDMA)/HSPA+/DC-HSDPA：
+                            频段 1/2/4/5/6/8/19TD-SCDMA：频段 34/39CDMA（主副卡二选一）:BC0( 800MHz)；(仅限中国电信（中国大陆+澳门）) GSM:频段 2/3/5/8(850/900/1800/1900 MHz)
+                            <br/>副卡：FDD-LTE：频段 1/2/3/4/5/6/7/8/9/12/17/18/19/20/26TD-LTE：频段 34/38/39/40/41(120M,2535-2655 MHz)UMTS(WCDMA)：频段 1/2/4/5/6/8/19CDMA:BC0( 800MHz)（仅限中国电信（中国大陆+澳门））
+                            GSM:频段 2/3/5/8(850/900/1800/1900 MHz)
+                            <br/>备注：各个地区的网络和频段可能有所不同，具体取决于当地运营商以及您所在的位置。
+                        </span>
+                    </li>
+                    <li>
+                        <label>数据业务</label>
+                        <span>TD-LTE/FDD-LTE/TD-SCDMA/WCDMA/HSPA+/DC-HSDPA/EVDO/CDMA1X/EDGE/GPRS，支持VoLTE/ViLTE备注：*各个地区的网络和频段可能有所不同，具体取决于当地运营商以及您所在的位置。
+                            *CDMA仅限中国电信（中国大陆+澳门）。*VoLTE/ViLTE依赖运营商网络支持并开通相关业务。
+                        </span>
+                    </li>
+                    <li>
+                        <label>浏览器</label>
+                        <span>支持（华为EMUI浏览器）</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>屏幕</h3>
+                <ul>
+                    <li><label>屏幕尺寸</label><span>6.47英寸（备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.47 英寸 (实际可视区域略小)）</span></li>
+                    <li><label>屏幕色彩</label><span>1670万色，DCI-P3广色域</span></li>
+                    <li><label>屏幕类型</label><span>OLED</span></li>
+                    <li><label>分辨率</label><span>FHD+ 2340*1080 像素（备注：该分辨率对应标准矩形，实际屏幕采用圆角和珍珠屏设计，有效像素略少。）</span></li>
+                    <li><label>触摸屏</label><span>多点触控触摸屏，最多支持10点触控</span></li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>传感器</h3>
+                <ul>
+                    <li><label>环境光传感器</label><span>支持</span></li>
+                    <li><label>红外传感器</label><span>支持</span></li>
+                    <li><label>指纹传感器</label><span>屏内指纹</span></li>
+                    <li><label>霍尔传感器</label><span>支持</span></li>
+                    <li><label>陀螺仪</label><span>支持</span></li>
+                    <li><label>指南针</label><span>支持</span></li>
+                    <li><label>NFC</label><span>支持读卡器模式、点对点模式、卡模拟模式（华为钱包支付，SIM卡支付*，HCE支付） * SIM卡支付所使用的SIM卡只能放在SIM1卡槽。</span></li>
+                    <li><label>接近光传感器</label><span>支持</span></li>
+                    <li><label>重力传感器</label><span>支持</span></li>
+                    <li><label>其他传感器</label><span>色温传感器</span></li>
+
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>存储</h3>
+                <ul>
+                    <li><label>运行内存（RAM）</label><span>8G（备注：可使用的内存容量小于此值，因为手机软件占用部分空间）</span></li>
+                    <li><label>机身内存（ROM）</label><span>128GB（备注：可使用的内存容量小于此值，因为手机软件占用部分空间）</span></li>
+                    <li><label>存储卡类型</label><span>NM存储卡，支持exFAT和FAT32格式</span></li>
+                    <li><label>最大支持扩展</label><span>256GB NM存储卡（非标配，需另行购买）</span></li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>娱乐功能</h3>
+                <ul>
+                    <li><label>音质</label><span>支持杜比音效</span></li>
+                    <li><label></label><span></span></li>
+                    <li><label></label><span></span></li>
+                    <li><label></label><span></span></li>
+                    <li><label></label><span></span></li>
+                    <li><label></label><span></span></li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>拍摄功能</h3>
+                <ul>
+                    <li>
+                        <label>后置摄像头</label>
+                        <span>后置徕卡四摄： 4000万像素超感光摄像头（广角，f/1.6光圈，OIS）+2000万像素超广角摄像头（f/2.2光圈）+800万像素超级变焦摄像头（
+                            f/3.4光圈，OIS）+华为Time-of-Flight（ToF）摄像头，支持自动对焦（相位对焦/反差对焦），支持AIS防抖。
+                            <br/>备注：不同拍照模式的照片像素可能有差异，请以实际为准。
+                        </span>
+                    </li>
+                    <li>
+                        <label>前置摄像头</label>
+                        <span>前置单摄： 3200万像素，f/2.0光圈备注： 不同拍照模式的照片像素可能有差异，请以实际为准。</span>
+                    </li>
+                    <li>
+                        <label>传感器类型</label>
+                        <span>BSI CMOS</span>
+                    </li>
+                    <li>
+                        <label>闪光灯</label>
+                        <span>后置单LED闪光灯</span>
+                    </li>
+                    <li>
+                        <label>视频拍摄</label>
+                        <span>后置摄像头：最大支持4K（3840*2160）视频录制，支持AIS防抖；支持720p@960fps超级慢动作视频 。
+                            <br/>前置摄像头：最大支持FHD+（2160*1080）视频录制，不支持光学防抖。
+                        </span>
+                    </li>
+                    <li>
+                        <label>变焦模式</label>
+                        <span>后置摄像头：5倍光学变焦（5倍变焦为近似值，镜头焦段分别为16mm，27mm，125mm）、10倍混合变焦（三个摄像头通过不同组合实现各种环境下出色的10倍变焦效果）、50倍数字变焦
+                            <br/>前置摄像头：不支持
+                        </span>
+                    </li>
+                    <li>
+                        <label>照片分辨率</label>
+                        <span>后置摄像头：最大可支持 7296 × 5472像素 前置摄像头：最大可支持 6528 × 4896像素
+                            <br/>备注：不同拍照模式的照片像素可能有差异，请以实际为准。
+                        </span>
+                    </li>
+                    <li>
+                        <label>摄像分辨率</label>
+                        <span>后置摄像头：最大可支持 3840 × 2160像素 前置摄像头：最大可支持 2336 × 1080像素
+                            <br/>备注：不同拍摄模式的视频像素可能有差异，请以实际为准。
+                        </span>
+                    </li>
+                    <li>
+                        <label>拍摄功能</label>
+                        <span>后置摄像头：双景录像(*功能随OTA升级支持)、超大广角、超微距、大光圈虚化、超级夜景、人像模式、专业模式、慢动作、全景模式、黑白艺术、流光快门、HDR、延时摄影、智能滤镜、水印、文档矫正、
+                            AI摄影大师、4D预测追焦、动态照片、熄屏快拍、笑脸抓拍、声控拍照、定时拍照、连拍、水下相机(*需要配合P30 Pro潜水保护壳使用，此潜水保护壳非标配，需另行购买)；
+                            <br/>前置摄像头：人像模式、全景模式、趣AR、延时摄影、智能滤镜、水印、笑脸抓拍、自拍镜像、声控拍照、定时拍照
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>传输功能</h3>
+                <ul>
+                    <li><label>WLAN</label><span>支持</span></li>
+                    <li><label>WLAN 协议</label><span>802.11 a/b/g/n/ac（wave2），MIMO，VHT160</span></li>
+                    <li><label>WLAN 频率</label><span>2.4G和5G</span></li>
+                    <li><label>蓝牙</label><span>Bluetooth 5.0，支持低功耗蓝牙、SBC、AAC，支持aptX，支持aptX HD、LDAC和HWA高清音频</span></li>
+                    <li><label>蓝牙文件传输</label><span>支持</span></li>
+                    <li><label>PC数据同步</label><span>支持</span></li>
+                    <li><label>OTG</label><span>支持（反向供电时最大输出电流5V/1A）</span></li>
+                    <li><label>红外遥控</label><span>支持</span></li>
+                    <li><label>USB</label><span>Type-C，USB 3.1 GEN1 备注： *USB 3.1 GEN1功能需搭配支持USB 3.1 GEN1的数据线（非标配，需另行购买）使用。 *标配数据线支持USB 2.0。</span></li>
+                    <li><label>GPS</label><span>支持 GPS（L1+L5双频）/AGPS/Glonass/北斗/ 伽利略（E1+E5a双频）/QZSS（L1+L5双频）</span></li>
+                    <li><label>手机投屏</label><span>支持</span></li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>通话功能</h3>
+                <ul>
+                    <li><label>语音通话</label><span>支持屏幕发声</span></li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>个人助理</h3>
+                <ul>
+                    <li><label>Office</label><span>支持（内置WPS Office，支持OFFICE文档查看和编辑，支持pdf文档查看，支持zip解压等）</span></li>
+                    <li><label>电子邮件</label><span>支持（POP3/IMAP/Exchange）</span></li>
+
+                    <li><label>闹钟</label><span></span></li>
+                    <li><label></label><span>支持（支持关机闹钟）</span></li>
+                    <li><label>录音</label><span>支持，并支持通话录音</span></li>
+                    <li><label>实用工具</label><span>指南针、手电筒、镜子、日历、图库、音乐、视频、计算器、备忘录、录音机、天气时钟、文件管理、手机管家、健康使用手机、AR测量(*随OTA升级支持)</span></li>
+                    <li>
+                        <label>特色应用</label>
+                        <span>
+                            人脸解锁、智慧视频、智能截屏、语音控制、情景智能、名片扫描、Huawei Share、支付保护中心、天际通、运动健康、
+                            单手操作、皮套模式、杂志锁屏、玩机技巧、应用锁、应用分身、隐私空间、密码保险箱、三重备份与恢复（云空间、外部存储、华为手机助手）、手机克隆
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>其他</h3>
+                <ul>
+                    <li><label>电池类型</label><span>锂离子聚合物电池</span></li>
+                    <li><label>电池容量</label><span>4200mAh（典型值）备注：电池额定容量为 4100mAh;</span></li>
+                    <li><label>电池更换</label><span>不支持（内置不可拆卸）</span></li>
+                    <li><label>充电器</label><span>标配充电器支持10V/4A或9V/2A或5V/2A输出</span></li>
+                    <li><label>理论充电时间</label><span>约1.1小时 备注：上述数据为使用标配充电器灭屏充电的实验室数据，实际充电时间，视使用情况而有所不同。</span></li>
+                    <li><label>理论待机时间</label><span>最长可达18.2天 备注：上述数据为实验室数据，实际待机时间，视当地的实际网络情况和使用习惯而有所不同。</span></li>
+                    <li><label>理论通话时间</label><span>理论3G通话时间：最长可达31小时 备注：上述数据为实验室数据，实际通话时间，视当地的实际网络情况和使用习惯而有所不同。</span></li>
+                    <li><label>快充</label><span>手机支持最大10V/4A超级快充，兼容4.5V/5A或5V/4.5A超级快充，兼容9V/2A快充。手机同时支持无线充电，最大支持15W无线快充，兼容Qi协议，无线充电底座非标配，需另行购买。</span></li>
+                    <li><label>耳机接口</label><span>Type-C 备注： 支持Type-C模拟和数字耳机。</span></li>
+                    <li><label>SIM卡类型</label><span>卡槽1：nano卡 卡槽2：nano卡或超微型存储卡（NM存储卡） 备注： 请将超微型存储卡（NM存储卡）插入卡槽2使用。如果需要，您可以在华为商城和华为授权经销商处购买。</span></li>
+                    <li><label>扬声器</label><span>支持</span></li>
+                    <li><label>抗指纹</label><span>支持防指纹膜（疏油层）</span></li>
+                    <li><label>软件名称</label><span>华为终端智能设备人机交互通信软件V9.0</span></li>
+                    <li><label>产品工作温度</label><span>0~35 ℃</span></li>
+                    <li><label>产品存储温度</label><span>-20~45 ℃</span></li>
+                    <li><label>整机充放电温度</label><span>放电：-20℃-60℃，充电：0℃-50℃ 电池单体规格书中充电温度范围为0℃-60℃</span></li>
+                    <li><label>机身尺寸</label><span>158.0mm（长）*73.4mm（宽）*8.41mm（厚）（备注：实际尺寸依配置、制造工艺、测量方法的不同可能有所差异。）</span></li>
+                    <li><label>机身重量</label><span>约192克（含电池）（备注：实际重量依配置、制造工艺、测量方法的不同可能有所差异。）</span></li>
+                    <li><label>防溅、抗水、防尘*</label>
+                        <span>IP68级别 说明：本手机并非专业防水手机，在正常使用状态下可防溅、抗水、防尘，在受控实验室条件下经测试，其效果在GB/T 4208-2017（国内）/ IEC 60529（海外）标准下达到 IP68 级别。
+                            防溅、抗水、防尘功能并非永久有效，防护性能可能会因日常磨损而下降。请勿在潮湿状态下为手机充电；请参阅使用手册了解清洁和干燥说明。由于浸入液体而导致的损坏不在保修范围之内。
+                        <br/>备注： * IP68中防水条件为（1）无流动清水，水深1.5米；（2）试验时间30分钟；（3）水温与产品温差不大于5摄氏度。
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--底部信息栏-->
+<div class="priceIntro">
+    <div class="container">
+        <h3>价格说明</h3>
+        <p> *因可能存在系统缓存，页面更新导致价格变动异常等不确定性情况出现，如您发现活动商品标价或促销信息有异常，请您立即联系我们，以便我们及时补正。
+            <br>*以上页面中的产品图片及屏幕内容仅作示意，实物产品效果（包括但不限于外观、颜色、尺寸）和屏幕显示内容（包括但不限于背景、UI、配图）可能略有差异，请以实物为准。
+            <br>*以上页面中的数据为理论值，均来自华为内部实验室，于特定测试环境下所得（请见各项具体说明），实际使用中可能因产品个体差异、软件版本、使用条件和环境因素不同略有不同，请以实际使用的情况为准。
+            <br>*为提供尽可能准确的产品信息、规格参数、产品特性，华为或荣耀可能实时调整和修订以上页面中的文字表述、图片效果等内容，以求与实际产品性能、规格、指数、零部件等信息相匹配，由于产品批次和生产供应因素实时变化，如遇确有进行上述修改和调整必要的情形，恕不专门通知。
+            <br>*请勿随意接收任何来源不明的文件，请勿随意点击任何来源不明的链接。涉及资金往来的事项请务必仔细核对资金往来信息。 HK不会以订单有问题，让您提供任何银行卡、密码、手机验证码！遇到可疑情况可在客服中心“诈骗举报”中进行举报.
+        </p>
+    </div>
+
+
+</div>
+<div class="container lastNav">
+    <hr>
+    <div class="col-md-3">
+
+        <ul>帮助中心
+            <li><a href="">账户管理</a></li>
+            <li><a href="">购物指南</a></li>
+            <li><a href="">订单操作</a></li>
+            <li><a href="">常见问题</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>服务支持
+            <li><a href="">线下门店</a></li>
+            <li><a href="">售后政策</a></li>
+            <li><a href="">服务网点</a></li>
+            <li><a href="">相关下载</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul id="aboutUs">关于我们
+            <li><a href="">了解HK</a></li>
+            <li><a href="">加入我们</a></li>
+            <li><a href="">新浪微博</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>特色服务
+            <li><a href="">会员特权</a></li>
+            <li><a href="">防伪查询</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">企业服务</a></li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

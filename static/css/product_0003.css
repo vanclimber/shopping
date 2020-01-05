@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+/* 顶部导航栏样式 */
+.topBar{background-color: rgb(245, 245, 245);height: 2.5em;margin-bottom: 2em;}
+.topBar p{font-size:1.5em;color: #323131;display: inline;}
+.topNav ul{font-size:1.5em;float: right;height: 100%;}
+.topLang button{font-size: inherit;}
+.topLang button:hover{color: rgb(240, 90, 45);}
+.topLang ul{height:2.6em;}
+.topLang ul li{font-size: 0.7em;}
+.topLang li a:hover{color: rgb(240, 90, 45);}
+/* 搜索栏样式 */
+.bigLogo{margin-bottom: 1em;}
+.bigLogo img{height:7em;}
+.Search{margin-top:1.5em;}
+.Search input{height:4em;border-radius:2em;border:2px solid rgb(240, 90, 45);}
+.Search button{height:4em;width:4em;border-radius:2em;background-color:rgb(240, 90, 45);color:white;}
+.Cart li{width: 8em;float:left;}
+.Cart a{margin-top:1.5em;float:right;}
+.Cart img{height:4em;}
+.littleDot{display: inline-block;position:relative;top: -1em;left: -1.3em;color: white;background-color: rgb(240, 90, 45);width:1.5em;text-align: center;border-radius:50%;}
+
+/*商品导航栏样式*/
+
+.staticHeader{background-color: white;z-index: 9999;position:relative;border-top: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;box-shadow: 0em 0.2em 0.2em rgba(0,0,0,0.07);}
+.staticHeader h3{float: left;margin-top: 0.3em;margin-bottom: 0;}
+.leftLink{float:left;margin-top: 0.7em;}
+.rightLink{float:right;}
+
+/*主页商品盒子以及选择样式*/
+.storeBox strong{color: #ff4a00;}
+.chooseAll li{font-size: 1.5em;margin-bottom: 1.5em;}
+.priceInfo{font-size: 1.5em}
+.priceInfo label{float: left;}
+.priceInfo p{color: #ff4a00;}
+.chooseAll select{border-radius: 0.2em;width:10em;appearance:none; -moz-appearance:none;-webkit-appearance:none;background: url("../image/logo/downarrow.png") no-repeat right center transparent;}
+
+/*商品详情界面*/
+.picture0{background: url("../image/product/product_0003/product_0003_block1.png")50% 0 no-repeat;background-size: auto 100%;height:27.3em;}
+.picture0 .con{padding-top: 2em;margin-left: 14em;font-size: 1.2em;}
+.con h2{display:none;color: white;font-size: 3em;line-height: 1.5em;}
+.con h3{display:none;font-size: 2em;color: #8aa4af;}
+.con h4{display:none;font-size: 1.5em;color: #8aa4af;}
+.con ul{display:none;margin-top: 2em;}
+.con ul li{display: inline-block;margin-right: 3em;color: rgba(250,250,250,0.7);font-size: 1.2em;}
+.con span{display:block;color: #45c3ff;font-size: 1.7em;}
+.picture1{background: url("../image/product/product_0003/product_0003_block2.png") 50% 0 no-repeat;background-size: cover;height: 60em;}
+.picture1 .con{padding-top: 5em;margin-left: 17em;}
+.picture2{background: url("../image/product/product_0003/product_0003_block3.png") 50% 0 no-repeat;background-size: cover;height: 40em;}
+.picture2 .con{padding-top: 4em;margin-left: 30em;}
+.picture2 h2{color: black;}
+.picture3{background: url("../image/product/product_0003/product_0003_block4.png") 50% 0 no-repeat;background-size: cover;height: 50em;}
+.picture3 .con{padding-top: 12em;margin-left: 56em;}
+.picture3 h2{color: black;}
+.picture4{background-color: #fee9e9;height:60em;}
+.picture4 .con{padding-top: 2em;margin-left: 10em;}
+.picture4 h2{color: black;}
+.picture4 h4{color: #585757;}
+.picture4 img{display:none;margin-top:3em;width: 90%;margin-bottom: 3em;}
+.picture5{background-color: #fee9e9;height:40em;}
+.picture5 .con{padding-top: 2em;margin-left: 10em;}
+.picture5 h2{color: #e46761;}
+.picture5 h4{color: black;}
+.picture5 img{display:none;position: absolute;right:20em;margin-top:-22em;width: 25%;}
+.lastPicture{background:url("../image/product/product_0003/product_0003_block5.png") 50% 0 no-repeat;background-size: auto 100%;height: 13em;}
+.lastPicture a{display:block;width: 100%;text-align: center;height:13em;padding-top: 3em;}
+.lastPicture h4{color: white;}
+
+
+
+/*参数页面*/
+#parameter .row{border-bottom: 0.1em solid #999;}
+.context{margin-bottom: 5em;}
+.context h1{font-size:3.5em;}
+.context h3{font-size:2.5em;margin-top: 1em;margin-bottom: 1em;}
+.context h4{line-height: 1.7em;margin-top: 2em;}
+.context h5{font-size:1.1em;margin-top:3em;color: #999;}
+.context img{width: 100%;}
+
+
+/*加入购物车及心愿单*/
+.addCart{margin-top: 3em;height: 4em;}
+.myCart{margin-left:3em;font-size:1.5em;height:3em;width:10em;background-color: rgb(240,90,45);}
+.myCart p{margin-top: 0.7em;}
+.myCart:hover{background-color: rgb(240,90,45)}
+.myLove{margin-left:3em;font-size: 1.5em;height: 3em;width: 6em;background-color: #E60415;}
+.myLove p{margin-top: 0.7em;}
+.myLove:hover{background-color: #E60415;}
+
+
+/*价格说明*/
+.priceIntro{background-color: #e0e0e0;}
+.priceIntro p{padding-top:4em;padding-bottom:4em;padding-left:7em;padding-right:7em;background-color: #fff;color: #4d4d4c;}
+/*页尾*/
+.lastNav ul{padding:0;font-size: 1.5em;text-align: center;}
+.lastNav ul li{font-size: 0.66em;}

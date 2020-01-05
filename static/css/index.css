@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+.container{margin-bottom: 2em;}
+/* 顶部导航栏样式 */
+.topBar{background-color: rgb(245, 245, 245);height: 2.5em;margin-bottom: 2em;}
+.topBar p{font-size:1.5em;color: #323131;display: inline;}
+.topNav ul{font-size:1.5em;float: right;height: 100%;}
+.topLang button{font-size: inherit;background:none;color: black;}
+.topLang button:hover{color: rgb(240, 90, 45);}
+.topLang ul{height:auto;}
+.topLang ul li{font-size: 0.7em;}
+.topLang li a:hover{color: rgb(240, 90, 45);}
+
+/* 搜索栏样式 */
+.bigLogo img{height:7em;}
+.Search{margin-top:1.5em;}
+.Search input{height:4em;border-radius:2em;border:2px solid rgb(240, 90, 45);}
+.Search button{height:4em;width:4em;border-radius:2em;background-color:rgb(240, 90, 45);color:white;}
+.Cart li{width: 8em;float:left;}
+.Cart a{margin-top:1.5em;float:right;}
+.Cart img{height:4em;}
+.littleDot{display: inline-block;position:relative;top: -1em;left: -1.3em;color: white;background-color: rgb(240, 90, 45);width:1.5em;text-align: center;border-radius:50%;}
+
+/* 商品目录 */
+.Tag{background-color:#a8d1ff;}
+.Tag .container{margin-bottom: 0;}
+.leftTag {height:4em;}
+.leftTag button{border:0;background-color: rgb(240, 90, 45);font-size: 2em;line-height: 2em;width:100%;color: white;}
+.leftTag button:focus, .leftTag button:hover{color:white;}
+.leftTag img{height:1.5em;margin-left:1em;margin-bottom: 0.2em;}
+.leftTag ul{height:30em;left:5%;width:90%;margin: 0;background-color: rgb(255, 255, 255);  }
+.leftTag ul li{height:3em;}
+.leftTag ul img{height: 1.33em;float:left;}
+.leftTag a{font-size: 1.5em;text-align: center;}
+
+.rightTag ul{height: 4em;}
+.rightTag  ul li a{font-size: 2em;color: black;}
+.rightTag  ul li a:hover{color:white;background-color:rgb(240, 90, 45);}
+
+/* 内容样式 */
+
+.storeInfo{border: 0.3em;font-size: 2em;text-align: center;background-color: #a8d1ff;font-family: "黑体";color: white}
+
+.content1 img{width:100%;}
+
+/* 页尾 */
+.lastNav ul{padding:0;font-size: 1.5em;text-align: center;}
+.lastNav ul li{font-size: 0.66em;}
+.mid{
+    color: #FFF;
+    width: 100%;
+    height: 100px;
+    background: orange;
+    padding: 30px  45%;
+    box-sizing: border-box;
+}
+.mid2{
+    color: #FFF;
+    width: 100%;
+    height: 2px;
+    background: orange;
+
+}
+.mid3{
+    color:#FFF;
+    width:80%;
+    height :800px;
+    background:white;
+    margin: 0px auto;
+    box-sizing: border-box;
+
+}
+.mid4{
+    color:#FFF;
+    width:100%;
+    height :100px;
+    background:white;
+
+
+
+}
+.mid5{
+    width: 100%;
+    height:200px;
+    background: red;
+    padding: 10px  35%;
+}
+.mid6{
+    color:#FFF;
+    width:100%;
+    height :100px;
+    background:white;
+    margin: 0px auto;
+    box-sizing: border-box;
+
+}

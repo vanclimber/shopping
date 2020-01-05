@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>购物车 || HK</title>
+    <meta name="description" content="HK商城">
+    <meta name="keywords" content="HK">
+    <link rel="stylesheet" href="../static/css/reset.css"   >
+    <link rel="stylesheet" href="../static/css/page_car.css"  />
+    <link rel="stylesheet" href="../static/css/page.css"   />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <script src="../static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/index.css" />
+</head>
+
+<body onload="foo();">
+<!-- 顶部导航栏 -->
+<div class="topBar">
+    <div class="container">
+        <div class="col-md-6">
+            <p>欢迎光临&nbsp;HK商城</p>
+        </div>
+        <div  class=" col-md-6 topNav">
+            <ul class="breadcrumb">
+                <li class="dropdown topLang">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
+                        欢迎,<i th:text="${session.USER_name}"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">个人主页</a>
+                        </li>
+                        <li role="presentation">
+                            <a th:href="@{/user/exitlogin}">退出登录</a>
+                        </li>
+                    </ul>
+                    <a th:if="${session.USER_ID==null}" href="login.html" th:href="@{/user/login}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </a>
+                </li>
+                <li class="dropdown topLang">
+
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        语言
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">English</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#aboutUs">关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 搜索框部分 -->
+<div class="container">
+    <div class="col-md-3 bigLogo">
+        <a th:href="@{/user/index}">
+            <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}" alt="HK网上商城">
+        </a>
+    </div>
+    <div class="col-md-6 Search">
+        <form th:action="@{/user/searchproduct}" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="搜你想要">
+                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-defalut"><span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-3 Cart">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="../static/image/logo/wish.png" th:src="@{/image/logo/wish.png}" alt="心愿单">
+                    <p th:if="${session.USER_ID!=null}" class="littleDot">0</p>
+                </a>
+            </li>
+            <li>
+                <a href="shoppingcart.html" th:href="@{/product/shoppingcart}">
+                    <img src="../static/image/logo/cartLogo.png" th:src="@{/image/logo/cartLogo.png}" alt="购物车">
+                    <p th:if="${session.USER_ID!=null}" th:text="${session.CART_num}" class="littleDot">0</p>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="content_show_wrapper">
+    <div class="cart_notification cart_error" style="">
+        <div class="message">
+            <p></p>
+        </div>
+    </div>
+    <div id="group_show">
+        <div class="content_header clear">
+            <div class="cart_timer_wrapper"> <i class="icon_small png"></i> <span class="cart_timer_counting">
+                请在 <span id="m"  class="cart_timer_text">900</span> 秒内去结账，
+                并在下单后 <span class="pink">20</span> 分钟内完成支付 </span>
+                <span class="cart_timer_out"> 已超过购物车商品保留时间，请尽快结算。 </span>
+                [<a class="cart_timer_tip float_box" href="javascript:void(0)"> ? <div class="pop_box">
+                    <span class="arrow_t_1"><span class="arrow_t_2"></span></span>
+                    <div class="timer_tip_text"> 由于商品库存有限，我们只能暂为您最多保存20分钟，
+                        <br>20分钟后购物车将被清空，请尽快结算订单。 </div> </div> </a>] </div>
+            <div class="top_banner">
+                <ul class="header_icons">
+                    <li> <span> <i class="icon_zhenpin header_icon png"></i> 假一赔十 </span> </li>
+                    <li> <span> <i class="icon_tuihuo header_icon png"></i> 7天无条件退货 </span> </li>
+                    <li> <span> <i class="icon_baoyou header_icon png"></i> 30天无条件换货 </span> </li>
+                </ul>
+            </div>
+            <div class="common_shippment"> <i class="icon_small icon_baoyou png">包邮</i>规则：HK商城满99元全场包邮 </div>
+        </div>
+
+
+        <form th:action="@{/product/shoppingcart}" method="post" id="myform">
+        <div class="groups_wrapper">
+            <table class="cart_group_item  cart_group_item_product">
+                <thead>
+                <tr>
+                    <th class="cart_overview">
+                        <div class="cart_group_header">
+                            <!--<input class="js_group_selector cart_group_selector" checked="checked" type="checkbox">-->
+                            <h2>商品信息</h2>
+                        </div>
+                    </th>
+                    <th class="cart_price">价格（元）</th>
+                    <th class="cart_num">数量</th>
+                    <th class="cart_total">小计（元）</th>
+                    <th class="cart_option">操作</th>
+                </tr>
+                </thead>
+                <!--<tr class="hide2">-->
+                <tr class="cart_item "  th:each="product:${products}" >
+                    <td valign="top">
+                        <div class="cart_item_desc clear">
+                            <!--<input class="js_item_selector cart_item_selector"-->
+                                   <!--data-item-key="1057066_d150603p892053zc" checked="'checked'/" type="checkbox">-->
+                            <div class="cart_item_desc_wrapper">
+                                <input type="checkbox" style="float: left;margin-top: 1em;" checked="checked" th:value="${product.id}" name="proID" class="checkBox">
+
+                                <a class="cart_item_pic" href="https://www.baidu.com" target="_blank">
+                                    <!--<img  th:src="@{/product/download(id=${product.id})}" alt="商品1">-->
+                                    <img  th:if="${product.filetitle}!=null" style="width: 5em;"
+                                          th:src="'/admin/img/'+${product.id}">
+                                    <span class="sold_out_pic png"></span> </a>
+                                <a class="cart_item_link"  th:text="${product.name}" >商品1</a>
+                                <p class="sku_info" > 规格：<span class="cart_item_attribute"
+                                                               th:text="${product.productType}">% %</span>&nbsp; </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+
+                        <p class="jumei_price"  th:text="${product.price}" style="margin-left: 3em;">32.00</p>
+
+                    </td>
+                    <td >
+                        <!--<input th:value="${product.id}" name="proID" readonly="readonly" type="hidden">-->
+                        <input type="number" min="1" value="1" name="quantity" class="goodsNum"  style="width: 40%;margin-left: 3em;">
+
+                    </td>
+                    <td>
+                        <p class="item_total_price" th:text="${product.price}" style="margin-left: 2em;">32.00</p>
+
+                    </td>
+                    <td>
+                        <div class="cart_item_option">
+                            <a  class="iconfont icon-shanchu"
+                                data-th-attr="onclick='deleteShoppingcart2(this, \'' + ${product.id} + '\')'"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="5"> 商品价格：￥ <span class="group_total_price" id="itemprice"></span> </td>
+                </tr>
+                <tr>
+                    <td colspan="5"> 运费：￥ <span class="group_total_price" id="shippingprice">10.00</span> </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="common_handler_anchor"></div>
+        <div class="common_handler">
+            <div class="right_handler"> 共 <span class="total_amount"> 3 </span> &nbsp;件商品 &nbsp;&nbsp;
+                商品应付总额：￥<span class="total_price" id="orderprice"></span>
+
+                <button   id="go_to_order" class="btn">去结算</button>
+            </div>
+            <!---->
+            <!--<label for="js_all_selector" class="cart_all_selector_wrapper">-->
+                <!--<input id="js_all_selector" class="js_all_selector all_selector"  onclick="cli('多选项名称');"-->
+                       <!--type="checkbox"> 全选 </label> -->
+            <a class="go_back_shopping" href="/user/index">继续购物</a>
+            <!--<span class="seperate_line">|</span> <a class="clear_cart_all" href="">清空选中商品</a>-->
+            <!--<form id="form_to_order" action="" method="post" style="display: none;">-->
+                <!--<input name="items_key" type="hidden"> </form>-->
+        </div>
+        </form>
+
+        <div class="content_footer clear">
+            <div class="cart_timer_wrapper"> <i class="icon_small png"></i> <span class="cart_timer_counting">
+                请在 <span id="n" class="cart_timer_text">900</span> 秒内去结账，并在下单后 <span class="pink">20</span>
+                分钟内完成支付 </span> <span class="cart_timer_out"> 已超过购物车商品保留时间，请尽快结算。 </span>
+                [<a class="cart_timer_tip float_box" href="javascript:void(0)"> ? <div class="pop_box">
+                    <span class="arrow_t_1"><span class="arrow_t_2"></span></span> <div class="timer_tip_text">
+                    由于商品库存有限，我们只能暂为您最多保存20分钟，<br>20分钟后购物车将被清空，请尽快结算订单。 </div>
+                </div> </a>] </div>
+        </div>
+    </div>
+    <div id="cart_side_nav">
+        <a href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="container lastNav">
+    <hr>
+    <div class="col-md-3">
+
+        <ul>帮助中心
+            <li><a href="">账户管理</a></li>
+            <li><a href="">购物指南</a></li>
+            <li><a href="">订单操作</a></li>
+            <li><a href="">常见问题</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>服务支持
+            <li><a href="">线下门店</a></li>
+            <li><a href="">售后政策</a></li>
+            <li><a href="">服务网点</a></li>
+            <li><a href="">相关下载</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul id="aboutUs">关于我们
+            <li><a href="">了解HK</a></li>
+            <li><a href="">加入我们</a></li>
+            <li><a href="">新浪微博</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>特色服务
+            <li><a href="">会员特权</a></li>
+            <li><a href="">防伪查询</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">企业服务</a></li>
+        </ul>
+    </div>
+</div>
+<script src="../js/jquery-1.4.2.min.js"></script>
+<script src="../js/imgTab.js"></script>
+<script>
+    function deleteShoppingcart2(elem, id) {
+        $.ajax({
+            url: '/product/deletecart2?id=' + id,
+            type: 'get',
+            success: function (data) {
+                $(elem).parent().parent().parent().remove();
+            },
+            fail: function (data) {
+                console.log('fail')
+            }
+        })
+    }
+</script>
+</body>
+<script type="text/javascript">
+    function foo(){
+        var s=document.getElementById('m').innerHTML;
+        if(s==0){setTimeout("javascript:location.href='/user/index'", 3000);
+            alert("支付时间已过期，请重新选购！2秒后将返回主页。");return;}
+        document.getElementById('m').innerHTML=s-1;
+        document.getElementById('n').innerHTML=s-1;
+        t=setTimeout('foo()',1000);
+    }
+
+    $(function () {
+        getPrice();
+
+        //计算价格
+        function getPrice(){
+            var eqCheckBox=$('input[name="proID"]');
+            var eqQuantities=$('input[name="quantity"]');
+            var eqPrePrice=$(".jumei_price");
+            var eqTotalPrice=$(".item_total_price");
+            for(var i=0;i<eqCheckBox.length;i++){
+                eqTotalPrice.eq(i).html(eqPrePrice.eq(i).html()*eqQuantities.eq(i).val());
+            }
+            var finalNum = 0;
+            var quantity=0;
+            for(var j=0;j<eqCheckBox.length;j++){
+                if(eqCheckBox.eq(j).prop("checked")){
+                    finalNum+=Number(eqTotalPrice.eq(j).html());
+                    quantity+=Number(eqQuantities.eq(j).val());
+                }
+            }
+            $("#itemprice").html(finalNum);
+            $(".total_amount").html(quantity);
+            var shipPrice=Number($("#shippingprice").html());
+            $("#orderprice").html(finalNum+shipPrice);
+        }
+
+        $(".goodsNum").change(function () {
+            getPrice();
+        });
+
+        $(".checkBox").click(function () {
+            getPrice();
+        });
+
+
+        //实现部分提交
+        $("#go_to_order").click(function () {
+            var myform=$("#myform");
+            var checkboxs=$('input[name="proID"]');
+            var quantities=$('input[name="quantity"]');
+            for(var i=0;i<checkboxs.length;i++){
+                if(!checkboxs.eq(i).prop("checked")){
+                    quantities.eq(i).remove();
+                }
+            }
+            myform.submit();
+
+        });
+
+    });
+</script>
+</html>

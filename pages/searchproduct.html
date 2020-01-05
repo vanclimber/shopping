@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>搜你想要-HK商城</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="../static/css/searchproduct.css" th:href="@{/css/searchproduct.css}">
+</head>
+<body>
+<!-- 顶部导航栏 -->
+<div class="topBar">
+    <div class="container">
+        <div class="col-md-6">
+            <p>欢迎光临&nbsp;HK商城</p>
+        </div>
+        <div  class=" col-md-6 topNav">
+            <ul class="breadcrumb">
+                <li class="dropdown topLang">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
+                        欢迎,<i th:text="${session.USER_name}"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">个人主页</a>
+                        </li>
+                        <li role="presentation">
+                            <a th:href="@{/user/exitlogin}">退出登录</a>
+                        </li>
+                        <li role="presentation">
+                            <a th:href="@{/product/checkoutlist}">我的订单</a>
+                        </li>
+                    </ul>
+                    <a th:if="${session.USER_ID==null}" href="login.html" th:href="@{/user/login}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                    </a>
+                </li>
+                <li class="dropdown topLang">
+
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        语言
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a href="#">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">English</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#aboutUs">关于我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索框部分 -->
+<div class="container">
+    <div class="col-md-3 bigLogo">
+        <a th:href="@{/user/index}">
+            <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}" alt="HK网上商城">
+        </a>
+    </div>
+    <div class="col-md-6 Search">
+        <form th:action="@{/user/searchproduct}" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="搜你想要">
+                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-defalut"><span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-3 Cart">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="../static/image/logo/wish.png" th:src="@{/image/logo/wish.png}" alt="心愿单">
+                    <p th:if="${session.USER_ID!=null}" class="littleDot">0</p>
+                </a>
+            </li>
+            <li>
+                <a href="shoppingcart.html" th:href="@{/product/shoppingcart}">
+                    <img src="../static/image/logo/cartLogo.png" th:src="@{/image/logo/cartLogo.png}" alt="购物车">
+                    <p th:if="${session.USER_ID!=null}" th:text="${session.CART_num}" class="littleDot">0</p>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<!--搜索结果界面-->
+<div class="searchBody">
+    <div class="container">
+        <div class="breadcrumbArea">
+            <a>全部结果</a> > <span th:text="${keyword}">"HK搜索引擎"</span>
+        </div>
+        <div class="chooseArea">
+            <div  class="categoryBox clearFixed">
+                <div class="cTitle">分类：</div>
+                <div class="cValues">
+                    <ul>
+                        <li><a class="selected" th:text="${keyword}">手机</a></li>
+                        <li><a>笔记本&平板</a></li>
+                        <li><a>热销配件</a></li>
+                        <li><a>增值服务&其他</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="priceBox clearFixed">
+                <div class="cTitle">价格区间：</div>
+                <div class="cValues">
+                    <ul>
+                        <li><a>0-999元</a></li>
+                        <li><a>1000-1999元</a></li>
+                        <li><a>2000-2999元</a></li>
+                        <li><a>3000-3999元</a></li>
+                        <li><a>4000-4999元</a></li>
+                        <li><a>5000-5999元</a></li>
+                        <li><a>6000-6999元</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="screenSize clearFixed">
+                <div class="cTitle">屏幕尺寸：</div>
+                <div class="cValues">
+                    <ul>
+                        <li><a>5.5英寸以下</a></li>
+                        <li><a>5.5-6.0英寸</a></li>
+                        <li><a>6.0-6.5英寸</a></li>
+                        <li><a>6.5英寸及以上</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="sortBox clearFixed">
+                <div class="cTitle">排序：</div>
+                <div class="cValues">
+                    <ul>
+                        <li><a class="selected">综合</a></li>
+                        <li><a>最新</a></li>
+                        <li><a>评价</a></li>
+                        <li><a>价格 <span class="glyphicon glyphicon-sort"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="channelList">
+            <div class="proList">
+                <ul id="printList" class="clearFixed">
+                    <li th:each="product:${productsList}">
+                        <div class="proPanels">
+                            <a th:href="'/product/details/'+${product.id}">
+                                <p class="pImg">
+                                    <img th:if="${product.filetitle}!=null" th:src="'/admin/img/'+${product.id}" >
+                                    <img th:if="${product.filetitle}==null" src="../static/image/product/product_0001_blue1.jpg" th:src="@{/image/product/product_0001_blue1.jpg}">
+                                </p>
+                                <p class="pName" th:text="${product.name}">
+                                    HK集团销售服务
+                                </p>
+                                <p class="pType" th:text="${product.productType}">
+                                    HK集团再度销售
+                                </p>
+                                <p class="pPrice" th:text="'￥'+${product.price}+'元'"><b>￥1999元</b></p>
+                            </a>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container lastNav">
+    <hr>
+    <div class="col-md-3">
+
+        <ul>帮助中心
+            <li><a href="">账户管理</a></li>
+            <li><a href="">购物指南</a></li>
+            <li><a href="">订单操作</a></li>
+            <li><a href="">常见问题</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>服务支持
+            <li><a href="">线下门店</a></li>
+            <li><a href="">售后政策</a></li>
+            <li><a href="">服务网点</a></li>
+            <li><a href="">相关下载</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul id="aboutUs">关于我们
+            <li><a href="">了解HK</a></li>
+            <li><a href="">加入我们</a></li>
+            <li><a href="">新浪微博</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>特色服务
+            <li><a href="">会员特权</a></li>
+            <li><a href="">防伪查询</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">企业服务</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
