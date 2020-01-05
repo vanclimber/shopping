@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>欢迎登录HK商城</title>
-    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}">
-    <script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
-    <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
+    <script src="../static/js/jquery.min.js" ></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" >
+    <script src="../static/bootstrap/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/login.css" >
 </head>
 <body>
     <div class="topLogo">
         <div class="container">
             <div class="col-md-3 leftLogin">
-                <a href="index.html" th:href="@{index}">
-                    <img src="../static/image/logo/biglogo.png" th:src="@{/image/logo/biglogo.png}">
+                <a href="../index.html" >
+                    <img src="../static/image/logo/biglogo.png" >
                 </a>
                 账号登录
             </div>
             <div class="col-md-3 col-md-offset-6">
                 <div class="rightLogin">
                 没有账号，
-                <a href="user-add.html" th:href="@{add}">点击注册</a>
+                <a href="user-add.html" >点击注册</a>
             </div>
             </div>
                 
@@ -34,33 +34,33 @@
     <div class="backgroundLogin">
  
         <div class="container">
-            <img src="../static/image/login/loginbackground.png" th:src="@{/image/login/loginbackground.png}">
+            <img src="../static/image/login/loginbackground.png" >
                 <div class="mainBox">
                     <div class="title">登录</div>
-                    <form th:action="@{/user/login}" method="post" th:object="${user}">
+                    <form method="post" >
                         <div class="form-group">
-                            <input type="text" class="form-control"name="name" th:field="*{name}" placeholder="用户名">
-                            <p th:if="${havewrong}==true" style="color: red">用户名或密码错误</p>
+                            <input type="text" class="form-control"name="name" placeholder="用户名">
+                            <p  style="color: red">用户名或密码错误</p>
                         </div>
                         <div class="form-group">
-                                <input class="form-control" type="password"  name="password" th:field="*{password}" placeholder="密码">
+                                <input class="form-control" type="password"  name="password"  placeholder="密码">
                             </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">登录</button>
                         </div>
                     </form>
                     <ul>
-                        <li><a href="user-add.html" th:href="@{add}">立即注册</a></li>
+                        <li><a href="user-add.html">立即注册</a></li>
                         <li> | </li>
                         <li><a href="">忘记密码？</a></li>
                     </ul>
                     <div class="otherWay">
                         <p>其他方式登录</p>
                         <ul>
-                            <li><a href=""><img src="../static/image/login/Wechat.png" th:src="@{/image/login/Wechat.png}"></a></li>
-                            <li><a href=""><img src="../static/image/login/QQ.png" th:src="@{/image/login/QQ.png}"></a></li>
-                            <li><a href=""><img src="../static/image/login/microblog.png" th:src="@{/image/login/microblog.png}"></a></li>
-                            <li><a href=""><img src="../static/image/login/Alipay.png" th:src="@{/image/login/Alipay.png}"></a></li>
+                            <li><a href=""><img src="../static/image/login/Wechat.png" ></a></li>
+                            <li><a href=""><img src="../static/image/login/QQ.png" ></a></li>
+                            <li><a href=""><img src="../static/image/login/microblog.png" ></a></li>
+                            <li><a href=""><img src="../static/image/login/Alipay.png" ></a></li>
                         </ul>
                     </div>
                 </div>

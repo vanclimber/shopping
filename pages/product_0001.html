@@ -22,20 +22,7 @@
         <div  class=" col-md-6 topNav">
             <ul class="breadcrumb">
                 <li class="dropdown topLang">
-                    <!-- <button class="btn dropdown-toggle" data-toggle="dropdown" th:if="${session.USER_ID!=null}"  >
-                        欢迎,<i th:text="${session.USER_name}"></i>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li role="presentation">
-                            <a href="#">个人主页</a>
-                        </li>
-                        <li role="presentation">
-                            <a th:href="@{/user/exitlogin}">退出登录</a>
-                        </li>
-                        <li role="presentation">
-                            <a th:href="@{/product/checkoutlist}">我的订单</a>
-                        </li>
-                    </ul> -->
+
                     <a  href="login.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
                     </a>
                 </li>
@@ -67,7 +54,7 @@
 <!-- 搜索框部分 -->
 <div class="container">
     <div class="col-md-3 bigLogo">
-        <a th:href="@{/user/index}">
+        <a href="../index.html">
             <img src="../static/image/logo/biglogo.png" alt="HK网上商城">
         </a>
     </div>
@@ -88,13 +75,13 @@
             <li>
                 <a href="#">
                     <img src="../static/image/logo/wish.png"  alt="心愿单">
-                    <p th:if="${session.USER_ID!=null}" class="littleDot">0</p>
+                    <p  class="littleDot">0</p>
                 </a>
             </li>
             <li>
                 <a href="shoppingcart.html" >
-                    <img src="../static/image/logo/cartLogo.png" th:src="@{/image/logo/cartLogo.png}" alt="购物车">
-                    <p th:if="${session.USER_ID!=null}" th:text="${session.CART_num}" class="littleDot">0</p>
+                    <img src="../static/image/logo/cartLogo.png"  alt="购物车">
+                    <p   class="littleDot">0</p>
                 </a>
             </li>
         </ul>
@@ -205,18 +192,18 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">添加购物车</h4>
                         </div>
-                        <form  method="post" th:action="@{/product/addCart}"  enctype="multipart/form-data">
+                        <form  method="post"   enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>商品名称</label>
-                                    <h4 th:text="${productsList.get(0).name}"></h4>
+                                    <h4 ></h4>
                                 </div>
                                 <div class="form-group">
                                     <label>商品SKU选择</label>
                                 </div>
-                                <div class="form-group SKUCycle" th:each="product:${productsList}" >
-                                    <input type="radio" name="proID" th:value="${product.id}" th:text="${product.productType}">
-                                    <label  th:text="'￥'+${product.price}+'元'"></label>
+                                <div class="form-group SKUCycle" >
+                                    <input type="radio" name="proID" >
+                                    <label  ></label>
                                 </div>
 
                             </div>
@@ -290,7 +277,7 @@
                     <h4>像素越高，清晰度越好。可拍摄6560×4928超高分辨率的高清照片，每根睫毛、 发丝都格外清晰。
                         <br/>无论后期美颜、修图、裁切，都会让你游刃有余，更好保留照片画质。
                     </h4>
-                    <img class="midImg" src="/image/product/product_0001_detail4.jpg">
+                    <img class="midImg" src="../static/image/product/product_0001_detail4.jpg">
                 </div>
             </div>
         </div>
@@ -304,7 +291,7 @@
                     <h4>你的自拍就是你的 Mimoji 形象。打开萌拍实时模仿你的一举一动，
                         <br/>不仅能制作卡通自拍照，还能根据上百种创作素材，制作充满创意
                         <br/>的短视频。</h4>
-                    <img src="/image/product/mimoji.png">
+                    <img src="../static/image/product/mimoji.png">
                     <h2>索尼4800万超高清AI三摄
                         <br/>年度旗舰主摄
                     </h2>
@@ -550,7 +537,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="context">
-                        <img src="/image/product/product_0001_parameter1.jpg">
+                        <img src="../static/image/product/product_0001_parameter1.jpg">
                     </div>
                 </div>
             </div>

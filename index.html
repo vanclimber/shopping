@@ -6,8 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" >
         <link rel="stylesheet" href="static/css/main.css" >
         <link rel="stylesheet" href="static/css/index.css" >
@@ -22,7 +20,7 @@
                 <div  class=" col-md-6 topNav">
                 <ul class="breadcrumb">
                     <li class="dropdown topLang">
-                        <a  href="login.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
+                        <a  href="pages/login.html" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录/注册
                         </a>
                     </li>
                     <li class="dropdown topLang">
@@ -58,15 +56,20 @@
                 </a>
             </div>
             <div class="col-md-6 Search">
+                <a href="pages/searchproduct.html">
+
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="input-group">
                         <input type="text" class="form-control" name="keyword" placeholder="搜你想要">
                         <span class="input-group-btn">
-                        <button type="submit" class="btn btn-defalut"><span class="glyphicon glyphicon-search"></span>
-                        </button>
+                            <button onclick="jumpToSearch()" class="btn btn-defalut">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                
+                            </button>
                     </span>
                     </div>
                 </form>
+            </a>
 
             </div>
             <div class="col-md-3 Cart">
@@ -74,13 +77,13 @@
                     <li>
                         <a href="#">
                             <img src="static/image/logo/wish.png" alt="心愿单">
-                            <!-- <p  class="littleDot">0</p> -->
+                            <p  class="littleDot">0</p>
                         </a>
                     </li>
                     <li>
                         <a href="pages/shoppingcart.html" >
                             <img src="static/image/logo/cartLogo.png"  alt="购物车">
-                            <!-- <p class="littleDot">0</p> -->
+                            <p class="littleDot">0</p>
                         </a>
                     </li>
                 </ul>
@@ -98,7 +101,7 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><img src="static/image/logo/电器.png" alt="">家用电器</a>
+                                <a href="pages/searchproduct.html"><img src="static/image/logo/电器.png" alt="">家用电器</a>
                             </li>
                             <li >
                                 <a href="#"><img src="static/image/logo/电器.png"  alt="">手机/数码</a>
@@ -262,4 +265,5 @@
 
     <script src="static/js/jquery.min.js" ></script>
     <script src="static/bootstrap/js/bootstrap.min.js" ></script>
+    <script src="static/js/index.js"></script>
 </html>
